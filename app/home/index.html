@@ -1,0 +1,49 @@
+﻿<h1>
+    Hi {{vm.user.firstName + ' ' + vm.user.lastName}}!!
+</h1>
+
+<br>
+<form method="post" novalidate>
+    <div class="form-group col-md-6">
+        <label for="date">Date</label>
+        <input type="date" name="date" id="date" class="form-control" ng-model="form.date" />
+    </div>
+    <div class="form-group col-md-6">
+        <label for="date">Time</label>
+        <input type="time" name="time" id="time" class="form-control" ng-model="form.time" />
+    </div>
+    <div class="form-group col-md-6">
+        <label for="date">Amount of milk (in litres)</label>
+        <input type="number" name="litres" id="litres" class="form-control" ng-model="form.litres" />
+    </div>
+    <div class="form-group col-md-6">
+        <label for="date">Percentage of fat</label>
+        <input type="number" min="1" max="30" name="date" id="date" class="form-control" ng-model="form.percentage" />
+    </div>
+    <div>
+        <button class="btn btn-success" type="submit" ng-click="save(form)">Save</button>
+        <button class="btn btn-danger" ng-click="clear(form)">Cancel</button>
+    </div>
+</form>
+
+<div class="col-md-12 flash-message">
+    <button class="col-md-4 btn btn-info btn-justified" ng-click="viewAll()">View all data</button>
+</div>
+<div class="col-md-12">
+    <table class="table table-striped">
+        <tr>
+            <td>User</td>
+            <td>Date</td>
+            <td>Time</td>
+            <td>Quantity</td>
+            <td>Percentage</td>
+        </tr>
+        <tr ng-repeat="data in allData">
+            <td>{{data.user}}</td>
+            <td>{{data.date | date}}</td>
+            <td>{{data.time}}</td>
+            <td>{{data.litres}}</td>
+            <td>{{data.percentage || '5'}}%</td>
+        </tr>
+    </table>
+</div>
